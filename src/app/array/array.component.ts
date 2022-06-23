@@ -1,19 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-array',
   templateUrl: './array.component.html',
   styleUrls: ['./array.component.css']
 })
-export class ArrayComponent implements OnInit {
+export class ArrayComponent {
 
-  arraySize: number;
+  arrayForm: FormGroup;
 
-  constructor() {
-    this.arraySize = 0;
+  constructor(private fb: FormBuilder) {
+    this.arrayForm = this.fb.group({
+      arraySize: [0],
+      startIdx: [0]
+    });
   }
 
-  ngOnInit(): void {
+  createArray(): void {
+    console.log(this.arrayForm.value);
   }
+
+
 
 }

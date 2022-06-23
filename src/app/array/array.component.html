@@ -1,6 +1,19 @@
 <section class="array-wrapper">
-    <div class="input-group">
-        <input type="text" class="size-input">
-    </div>
+    <form [formGroup]="arrayForm" (ngSubmit)="createArray()" class="array-controls">
+        <div class="row g-2">
+            <div class="col">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="array-size" formControlName="arraySize">
+                    <label for="array-size" class="form-label">Array Size</label>
+                </div>
+            </div>
+            <div class="col form-floating">
+                <input type="text" class="form-control" id="start-idx" formControlName="startIdx">
+                <label for="star-idx" class="form-label">Array Starting Index</label>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-warning" [disabled]="!arrayForm.valid">Create Array</button>
+            </div>
+        </div>
+    </form>
 </section>
-
