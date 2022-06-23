@@ -12,7 +12,7 @@
                 <label for="star-idx" class="form-label">Array Starting Index</label>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-warning" [disabled]="!arrayForm.valid">Create Array</button>
+                <create-icon [iconSizeInPx]="35" [cssColorCode]="getCreateButtonColor()"></create-icon>
             </div>
         </div>
     </form>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-array',
@@ -12,15 +12,23 @@ export class ArrayComponent {
 
   constructor(private fb: FormBuilder) {
     this.arrayForm = this.fb.group({
-      arraySize: [0],
-      startIdx: [0]
+      arraySize: [0, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      startIdx: [0, [Validators.required, Validators.pattern("^[0-9]*$")]]
     });
   }
 
   createArray(): void {
-    console.log(this.arrayForm.value);
+    if (this.arrayForm.valid) {
+      console.log(this.arrayForm.value);
+    }
   }
 
+  getCreateButtonColor() : string {
+    if (this.arrayForm.valid) {
+        return 'rgb(252, 186, 3)';
+    }
+    return 'rgba(252, 186, 3, 0.5)';
+  }
 
 
 }
